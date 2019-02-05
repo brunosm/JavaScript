@@ -7,101 +7,107 @@ var operandos ={
 }
 
 function numero(valor){
-  if(operandos.operador==""){
-    operandos.numAnt = display.innerHTML;
-    if( operandos.numAnt =="0" && valor=="0"){
-      document.getElementById("display").innerHTML = "0";
+  if(display.textContent.length<8)
+   {
+    if(operandos.operador==""){
+      operandos.numAnt = display.innerHTML;
+      if( operandos.numAnt =="0" && valor=="0"){
+        document.getElementById("display").innerHTML = "0";
 
-    }else if(operandos.numAnt=="0" && valor!="0" ){
+      }else if(operandos.numAnt=="0" && valor!="0" ){
 
-      document.getElementById("display").innerHTML = valor;
-      operandos.numAnt = valor;
-      return
-
-    }else{
-      if(valor=="." && !display.innerHTML.includes("."))
-      {
-        operandos.numAnt = display.innerHTML+".";
-        display.innerHTML = operandos.numAnt;
-        return;
-      }else if(valor=="." && display.innerHTML.includes(".")){
-
+        document.getElementById("display").innerHTML = valor;
+        operandos.numAnt = valor;
+        return
 
       }else{
-        document.getElementById("display").innerHTML = operandos.numAnt+valor;
-        operandos.numAnt = operandos.numAnt+valor;
+        if(valor=="." && !display.innerHTML.includes("."))
+        {
+          operandos.numAnt = display.innerHTML+".";
+          display.innerHTML = operandos.numAnt;
+          return;
+        }else if(valor=="." && display.innerHTML.includes(".")){
+
+
+        }else{
+          document.getElementById("display").innerHTML = operandos.numAnt+valor;
+          operandos.numAnt = operandos.numAnt+valor;
+        }
       }
-    }
-
-  }else{
-    operandos.numSig = display.innerHTML;
-    if( operandos.numSig =="0" && valor=="0"){
-      document.getElementById("display").innerHTML = "0";
-
-    }else if(operandos.numSig=="0" && valor!="0" ){
-
-      document.getElementById("display").innerHTML = valor;
 
     }else{
-      if(valor=="punto" && !display.innerHTML.includes("."))
-      {
-        operandos.numSig = display.innerHTML+".";
-        display.innerHTML = operandos.numSig;
-        return;
-      }else if(valor=="punto" && display.innerHTML.includes(".")){
+      operandos.numSig = display.innerHTML;
+      if( operandos.numSig =="0" && valor=="0"){
+        document.getElementById("display").innerHTML = "0";
 
+      }else if(operandos.numSig=="0" && valor!="0" ){
+
+        document.getElementById("display").innerHTML = valor;
 
       }else{
-        document.getElementById("display").innerHTML = operandos.numSig+valor;
-        operandos.numSig = operandos.numSig+valor;
-      }
-    }
-    switch(operandos.operador.toString()){
-      case "+":
-          operandos.numAnt=parseFloat(operandos.numAnt)+parseFloat(operandos.numSig);
-          operandos.numAnt=operandos.numAnt.toFixed(2);
-      break;
-      case "-":
-          operandos.numAnt=parseFloat(operandos.numAnt)-parseFloat(operandos.numSig);
-          operandos.numAnt=operandos.numAnt.toFixed(2);
-      break;
-      case "*":
-          operandos.numAnt=parseFloat(operandos.numAnt)*parseFloat(operandos.numSig);
-          operandos.numAnt=operandos.numAnt.toFixed(2);
-      break;
-      case "/":
-          operandos.numAnt=parseFloat(operandos.numAnt)/parseFloat(operandos.numSig);
-          operandos.numAnt=operandos.numAnt.toFixed(2);
-      break;
+        if(valor=="punto" && !display.innerHTML.includes("."))
+        {
+          operandos.numSig = display.innerHTML+".";
+          display.innerHTML = operandos.numSig;
+          return;
+        }else if(valor=="punto" && display.innerHTML.includes(".")){
 
+
+        }else{
+          document.getElementById("display").innerHTML = operandos.numSig+valor;
+          operandos.numSig = operandos.numSig+valor;
+        }
+      }
+      switch(operandos.operador.toString()){
+        case "+":
+            operandos.numAnt=parseFloat(operandos.numAnt)+parseFloat(operandos.numSig);
+
+        break;
+        case "-":
+            operandos.numAnt=parseFloat(operandos.numAnt)-parseFloat(operandos.numSig);
+
+        break;
+        case "*":
+            operandos.numAnt=parseFloat(operandos.numAnt)*parseFloat(operandos.numSig);
+
+        break;
+        case "/":
+            operandos.numAnt=parseFloat(operandos.numAnt)/parseFloat(operandos.numSig);
+          
+        break;
+
+      }
     }
   }
 }
 
   function operar(operacion){
-    switch(operacion){
-      case 'raiz':
-        document.getElementById("display").innerHTML = Math.sqrt(operandos.numAnt);
-        break;
-      case 'on':
-        document.getElementById("display").innerHTML = "0";
-        operandos.numAnt = 0;
-        operandos.operador ="";
-        break;
-      case 'igual':
+    if(display.textContent.length<8)
+     {
+      switch(operacion){
+        case 'raiz':
+          document.getElementById("display").innerHTML = Math.sqrt(operandos.numAnt);
+          break;
+        case 'on':
+          document.getElementById("display").innerHTML = "0";
+          operandos.numAnt = 0;
+          operandos.operador ="";
+          break;
+        case 'igual':
 
-        document.getElementById("display").innerHTML =  operandos.numAnt
+          document.getElementById("display").innerHTML =  operandos.numAnt
 
-        break;
-      case 'sign':
-        if(display.innerHTML.includes("-")){
-          document.getElementById("display").innerHTML =  "" + operandos.numAnt
-          operandos.numAnt= -1 * parseFloat(operandos.numAnt)
-        }else{
-          document.getElementById("display").innerHTML =  - + operandos.numAnt
-          operandos.numAnt= -1 * parseFloat(operandos.numAnt)
-        }
-        break;
+          break;
+        case 'sign':
+          if(display.innerHTML.includes("-")){
+            document.getElementById("display").innerHTML =  "" + operandos.numAnt
+            operandos.numAnt= -1 * parseFloat(operandos.numAnt)
+          }else{
+            document.getElementById("display").innerHTML =  - + operandos.numAnt
+            operandos.numAnt= -1 * parseFloat(operandos.numAnt)
+          }
+          break;
+      }
     }
   }
 
