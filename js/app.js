@@ -19,12 +19,12 @@ function numero(valor){
       return
 
     }else{
-      if(valor=="punto" && !display.innerHTML.includes("."))
+      if(valor=="." && !display.innerHTML.includes("."))
       {
         operandos.numAnt = display.innerHTML+".";
         display.innerHTML = operandos.numAnt;
         return;
-      }else if(valor=="punto" && display.innerHTML.includes(".")){
+      }else if(valor=="." && display.innerHTML.includes(".")){
 
 
       }else{
@@ -59,15 +59,19 @@ function numero(valor){
     switch(operandos.operador.toString()){
       case "+":
           operandos.numAnt=parseFloat(operandos.numAnt)+parseFloat(operandos.numSig);
+          operandos.numAnt=operandos.numAnt.toFixed(2);
       break;
       case "-":
           operandos.numAnt=parseFloat(operandos.numAnt)-parseFloat(operandos.numSig);
+          operandos.numAnt=operandos.numAnt.toFixed(2);
       break;
       case "*":
           operandos.numAnt=parseFloat(operandos.numAnt)*parseFloat(operandos.numSig);
+          operandos.numAnt=operandos.numAnt.toFixed(2);
       break;
       case "/":
           operandos.numAnt=parseFloat(operandos.numAnt)/parseFloat(operandos.numSig);
+          operandos.numAnt=operandos.numAnt.toFixed(2);
       break;
 
     }
@@ -124,7 +128,10 @@ var calculadora = {
     var mas = document.getElementById("mas")
     var igual = document.getElementById("igual")
    cero.addEventListener("click",function(){
-      self.numero("0")
+     if(display.textContent.length<8)
+      {
+        self.numero("0")
+      }
     })
     cero.addEventListener("mousedown",function(){
       cero.setAttribute("style","transform:scale(0.95,0.95)")
@@ -133,7 +140,10 @@ var calculadora = {
       cero.setAttribute("style","transform:scale(1,1)")
     })
      uno.addEventListener("click",function(){
-        self.numero("1")
+       if(display.textContent.length<8)
+        {
+          self.numero("1")
+        }
       })
     uno.addEventListener("mousedown",function(){
       uno.setAttribute("style","transform:scale(0.95,0.95)")
@@ -142,7 +152,10 @@ var calculadora = {
       uno.setAttribute("style","transform:scale(1,1)")
     })
     dos.addEventListener("click",function(){
-      self.numero("2")
+      if(display.textContent.length<8)
+       {
+         self.numero("2")
+       }
     })
     dos.addEventListener("mousedown",function(){
       dos.setAttribute("style","transform:scale(0.95,0.95)")
@@ -151,7 +164,10 @@ var calculadora = {
       dos.setAttribute("style","transform:scale(1,1)")
     })
     tres.addEventListener("click",function(){
-      self.numero("3")
+      if(display.textContent.length<8)
+       {
+         self.numero("3")
+       }
     })
     tres.addEventListener("mousedown",function(){
       tres.setAttribute("style","transform:scale(0.95,0.95)")
@@ -160,8 +176,10 @@ var calculadora = {
       tres.setAttribute("style","transform:scale(1,1)")
     })
     cuatro.addEventListener("click",function(){
-      self.numero("4")
-
+      if(display.textContent.length<8)
+       {
+         self.numero("4")
+       }
     })
     cuatro.addEventListener("mousedown",function(){
       cuatro.setAttribute("style","transform:scale(0.95,0.95)")
@@ -170,7 +188,10 @@ var calculadora = {
       cuatro.setAttribute("style","transform:scale(1,1)")
     })
     cinco.addEventListener("click",function(){
-      self.numero("5")
+      if(display.textContent.length<8)
+       {
+         self.numero("5")
+       }
     })
     cinco.addEventListener("mousedown",function(){
       cinco.setAttribute("style","transform:scale(0.95,0.95)")
@@ -179,7 +200,10 @@ var calculadora = {
       cinco.setAttribute("style","transform:scale(1,1)")
     })
     seis.addEventListener("click",function(){
-      self.numero("6")
+      if(display.textContent.length<8)
+       {
+         self.numero("6")
+       }
     })
     seis.addEventListener("mousedown",function(){
       seis.setAttribute("style","transform:scale(0.95,0.95)")
@@ -188,7 +212,10 @@ var calculadora = {
       seis.setAttribute("style","transform:scale(1,1)")
     })
     siete.addEventListener("click",function(){
-      self.numero("7")
+      if(display.textContent.length<8)
+       {
+         self.numero("7")
+       }
     })
     siete.addEventListener("mousedown",function(){
       siete.setAttribute("style","transform:scale(0.95,0.95)")
@@ -197,7 +224,10 @@ var calculadora = {
       siete.setAttribute("style","transform:scale(1,1)")
     })
     ocho.addEventListener("click",function(){
-      self.numero("8")
+      if(display.textContent.length<8)
+       {
+         self.numero("8")
+       }
     })
     ocho.addEventListener("mousedown",function(){
       ocho.setAttribute("style","transform:scale(0.95,0.95)")
@@ -206,7 +236,10 @@ var calculadora = {
       ocho.setAttribute("style","transform:scale(1,1)")
     })
     nueve.addEventListener("click",function(){
-      self.numero("9")
+      if(display.textContent.length<8)
+       {
+         self.numero("9")
+       }
     })
     nueve.addEventListener("mousedown",function(){
       nueve.setAttribute("style","transform:scale(0.95,0.95)")
@@ -215,7 +248,7 @@ var calculadora = {
       nueve.setAttribute("style","transform:scale(1,1)")
     })
     punto.addEventListener("click",function(){
-      self.numero("punto")
+      self.numero(".")
     })
     punto.addEventListener("mousedown",function(){
       punto.setAttribute("style","transform:scale(0.95,0.95)")
@@ -233,8 +266,10 @@ var calculadora = {
       on.setAttribute("style","transform:scale(1,1)")
     })
     sign.addEventListener("click",function(){
-
-      self.operar("sign")
+      if(display.textContent.length<8)
+       {
+         self.operar("sign")
+       }
     })
     sign.addEventListener("mousedown",function(){
       sign.setAttribute("style","transform:scale(0.95,0.95)")
