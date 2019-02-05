@@ -30,12 +30,7 @@ var calculadora = {
     var numeroOperacion = ""
   document.getElementById("calculadoraFondo").addEventListener('click',function(event){
     numeroOperacion = event.target.id;
-    numeroOperacion.addEventListener("mousedown",function(){
-        numeroOperacion.setAttribute("style","transform:scale(0.95,0.95)")
-      })
-      numeroOperacion.addEventListener("mouseout",function(){
-        numeroOperacion.setAttribute("style","transform:scale(1,1)")
-      })
+
 
   })
 
