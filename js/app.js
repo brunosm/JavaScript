@@ -76,11 +76,14 @@ function numero(valor){
 
   function operar(operacion){
     switch(operacion){
-          case 'on':
-          document.getElementById("display").innerHTML = "0";
-          operandos.numAnt = 0;
-          operandos.operador ="";
-          break
+      case 'raiz':
+        document.getElementById("display").innerHTML = Math.sqrt(operandos.numAnt);
+        break;
+      case 'on':
+        document.getElementById("display").innerHTML = "0";
+        operandos.numAnt = 0;
+        operandos.operador ="";
+        break;
       case 'igual':
 
         document.getElementById("display").innerHTML =  operandos.numAnt
@@ -89,8 +92,10 @@ function numero(valor){
       case 'sign':
         if(display.innerHTML.includes("-")){
           document.getElementById("display").innerHTML =  "" + operandos.numAnt
+          operandos.numAnt= -1 * parseFloat(operandos.numAnt)
         }else{
           document.getElementById("display").innerHTML =  - + operandos.numAnt
+          operandos.numAnt= -1 * parseFloat(operandos.numAnt)
         }
         break;
     }
